@@ -1,14 +1,14 @@
 
 #Subproyecto parte de SMS: StudentsManagementSystem
 
-Este README parte de la descripción dada en el proyecto SMS, donde se explica la motivación y a lo que se dedicará el rpoyecto en general. 
+Este README parte de la descripción dada en el [fichero del proyecto SMS](https://github.com/ButterFlyDevs/StudentsManagementSystem/blob/master/README.md), donde se explica la motivación y a lo que se dedicará el rpoyecto en general. 
 
 Como resumen, se repite que este proyecto se ha elegido por petición por parte de algunos profesores de un sistema capaz de dar apoyo en las labores del profesorado, en la etapa de enseñanza primaria, secundaria y bachillerato. Brindará soporte y agilizará las tareas de los docentes en el día a día en las aulas (pudiendose implementar gestiones de partes de incidencias de comportamiento, asistencia a clase, calificaciones, comunicación con los padres e interna entre personal del centro, etc.)
 
 Además, proyecto se presentará al Certamen de proyectos de la UGR organizado por la Oficina de Software Libre.
 
 
-Definida en dicho README que la arquitectura del proyeto serán 4 (o 5) máquinas totales (balanceador, servidor 1 y 2, base de datos y réplica de la base de datos), en este subproyecto se trabajará con el **balanceador y las máquinas servidoras**
+Definida en dicho [README](https://github.com/ButterFlyDevs/StudentsManagementSystem/blob/master/README.md) que la arquitectura del proyeto serán 4 (o 5) máquinas totales (balanceador, servidor 1 y 2, base de datos y réplica de la base de datos), en este subproyecto se trabajará con el **balanceador y las máquinas servidoras**
 
 ## Herramientas utilizadas y estructura en la nube
 
