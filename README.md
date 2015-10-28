@@ -7,6 +7,7 @@ Como resumen, se repite que este proyecto se ha elegido por petición por parte 
 
 Además, proyecto se presentará al Certamen de proyectos de la UGR organizado por la Oficina de Software Libre.
 
+Probando
 
 Definida en dicho [README](https://github.com/ButterFlyDevs/StudentsManagementSystem/blob/master/README.md) que la arquitectura del proyeto serán 4 (o 5) máquinas totales (balanceador, servidor 1 y 2, base de datos y réplica de la base de datos), en este subproyecto se trabajará con el **balanceador y las máquinas servidoras**
 
