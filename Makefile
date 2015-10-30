@@ -5,5 +5,4 @@ install:
 	#Algunos paquetes no son utilizados ahora, pero si que serán utilizados a posteriori
 test:
 
-	cd SMS_Estadisticas
-	nosetests test_mediante_sure.py
+	nosetests SMS_Estadisticas/test_mediante_sure.py
