@@ -28,3 +28,31 @@ Definida en dicho [README](https://github.com/ButterFlyDevs/StudentsManagementSy
 
 NOTA: La aplicación, originalmente, se desarrollará en GoogleApEngine, pero realizaremos modificaciones oportunas en el código para poder hacer el despliegue en estas máquinas y sin utilizar la infraestructura de Google.
 
+
+## Segundo hito de la práctica
+
+Como anotación, aunque no tenga que ver con el hito en sí, se ha renombrado tanto el repositorio como el README, además de cambiar el enfoque del proyecto. Ahora el proyecto tratará de crear una base de datos de estadísticas, que cogerá los datos de la base de datos del compañero, para elaborar una serie de funciones que establezcan relaciones entre los datos, y pueda ser usadas en el proyecto principal (quien es el profesor con más porcentaje de suspensos, cuál es la clase con más porcentaje de faltas o partes de incidencias, etc.)
+
+##### Configuración correcta de herramientas de construcción.
+
+Se ha optado por hacer un archivo [Makefile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Makefile) que se encarga tanto de testear el proyecto, como de instalarlo. Las órdenes respectivamente son **make test** y **make install**.
+
+Para el testeo de la prueba, se utiliza [sure](https://pypi.python.org/pypi/sure), un paquete destinado al testeo de aplicaciones Python. Se podría haber hecho el desarrollo de la aplicación en otro lenguaje, pero como el proyecto principal y el otro subproyectoestarán hechos con Python, creí conveniente seguir usando el mismo lenguaje (además, en los ejercicios utilicé Python, así que no tenía más que replicar los pasos de los ejercicios, pero en el proyecto). También, tengo pensado crear un apartado web de configuración de las estadísticas (de ahí la carpeta [plantilla](https://github.com/JA-Gonz/SMS_Estadisticas/tree/master/SMS_Estadisticas/plantilla), y que use el archivo [pasarelatest](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/pasarelatest.py) para que el test principal pueda usar las funciones de webapp2).
+
+Este paquete es de funcionamiento simple: busca todas las funciones que comiencen por **test_** definidas en la clase del [archivo .py](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/test_mediante_sure.py) que se pasa como parámetro, y las ejecuta. Dentro de dichas funciones, hacemos llamdas a otras funciones de la aplicación, y se comprueba si la salida de las mismas son como deberían de ser.
+
+El test se lanza mediante [nose](https://nose.readthedocs.org/en/latest/), otro paquete que complementa a las funciones de [unittest](https://docs.python.org/2/library/unittest.html). En realidad, tan solo con unittest es necesario para poder ejecutar el test, pero sure aporta facilidad al testeo(no necesitamos llamar explícitamente a las funciones de testeo, él lo hace solo), estando un poco a más alto nivel.
+
+Para definir todas las dependencias de instalación, se usa el archivo [requirements.txt](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/requirements.txt), el cuál usará el makefile para intentar resolver.
+
+##### Integración continua funcionando.
+
+Se ha usado Travis para agilizar la integración continua en el proyecto (de hecho, el estado de erróneo o de éxito del proyecto en un momento determinado, aparece en la primera imagen de éste Readme).
+
+Al darme de alta en Travis mediante GitHub, y enlazar este repositorio a Travis, éste se quedará "esperando" nuevos push para ponerse a testear el proyecto, y comprobar si las actualizaciones conducen a un estado exitoso. Para que Travis pueda hacer esto, se necesita configurar en el repositorio el archivo [.travis.yml](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/.travis.yml), donde básicamente se esepcifica que instale las dependencias y ejecute el script de testeo.
+
+##### Tests significativos y/o avance del proyecto en sí más allá de lo básico.
+
+Debido a la naturaleza del proyecto, necesito conectar a la base de datos del compañero para poder realizar funciones realmente útiles. Por ahora, el archivo [RecolectorDatos.py](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/RecolectorDatos.py) devuelve listas inventadas, aunque ese mismo archivo será sobreescrito para que pueda conectar a la base de datos del compañero y traer datos reales.
+
+El archivo [Estadisticas.py](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/Estadisticas.py) se encarga de la logística de las operaciones de estadística, llamando a RecolectorDatos para servirse de la información necesaria para funcionar. Por ahora, todas las funciones devuelven datos de prueba para que pase los tests, aunque la función que se encarga de calcular el **porcentaje de suspensos de cada profesor** si está implementada y funciona correctamente.
