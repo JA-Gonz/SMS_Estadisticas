@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import sure
 import unittest
 import webapp2
 import pasarelatest
