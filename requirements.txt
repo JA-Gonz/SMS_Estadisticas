@@ -6,4 +6,5 @@ WebOb==1.5.0
 python-dateutil==2.4.2
 sure==1.2.24
 webapp2==2.5.2
+nose==1.3.7
 gunicorn==19.3.0
