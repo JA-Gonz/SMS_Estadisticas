@@ -68,7 +68,7 @@ Definida la interfaz web mínima necesaria para el proyecto, se ha decidido desp
 Se ha configurado Heroku de la siguiente forma:
 
 1. Se ha creado el pipeline (en este caso, smsestadisticas), por si más adelante se decidiera incorporar mas microservicios dependientes de éste.
-2. Se ha creado en GitHub una rama "producción", que es la que se ha configurado en Heroku para desplegar del repositorio. De esta forma, estaremos trabajando en master como siempre hemos hecho, y cuando queramos subir cambios efectivos a "produccion", los subimos a la otra rama. Los cambios serán desplegados automáticamente.
+2. Se ha creado en GitHub una rama "desarrollo", que es en la que trabajaremos. Cuando queramos pasar cambios a producción, Heroku cogerá los datos automáticamente de la rama master, así que no tendremos más que subir nuestro código a dicha rama (de desarrollo a master),
 3. Se han dejado las opciones por defecto de esperar por el CI (Travis en nuestro caso, para asegurarnos que el paso a producción es de una version al menos estable), y de auto-desplegar
 
 Para usar la aplicación, simplemente seguimos el enlace de Heroku del principio del documento, y escribimos algunas de las órdenes que hay como ejemplo debajo del formulario.
