@@ -15,6 +15,7 @@ Definida en dicho [README](https://github.com/ButterFlyDevs/StudentsManagementSy
 
 ## Herramientas utilizadas y estructura en la nube
 
+
 - Se usará webapp2 para crear la aplicación web que servirá para consultar y configurar las estadísticas. 
 - Se usará Ansible para manejar las máquinas en su fase de despliegue. Ansible tendrá un playbook que será ejecutado automáticamente dentro del script de despliegue automático, que levantará las dos máquinas, y les dará las primeras instrucciones (que serán descargar los scripts de aprovisionamiento para poder empezar a funcionar).
 
@@ -63,7 +64,7 @@ Llegados a este punto de desarrollo del proyecto, hay que remarcar que en realid
 
 Por todo esto, se ha creado una "interfaz de usuario" mínima, donde hay un formulario con 3 elementos: campo de entrada, botón, y área de texto. En el campo de entrada, se pone el nombre de la función estadística que se desea ejecutar, y tras enviarla con el botón, aparecerá a la derecha la salida de la función. Esa salida será la que reciba bien otro micro servicio "parseador" que trate esos datos, o bien la propia interfaz web, y ya se encargará de leer y colocar en la vista de la página para el usuario (aún está por ver).
 
-Definida la interfaz web mínima necesaria para el proyecto, se ha decidido desplegarla en **Heroku**. La razón de por qué se ha escogido este PaaS, es la de poder incluir la configuración necesaria en un fichero [Procfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Procfile), por que es compatible con el lenguaje de desarrollo del proyecto (en este caso, Python), también por que viendo la [documentación de Heroku sobre despliegues de appliaciones Python](https://devcenter.heroku.com/articles/getting-started-with-python-o), hay bastantes ejemplos y ayuda que nos facilita el proceso, y por último, por que permite la conexión con GitHub para el auto-despliegue de la aplicación después de hacer "push" del código.
+Definida la interfaz web mínima necesaria para el proyecto, se ha decidido desplegarla en **Heroku**. La razón de por qué se ha escogido este PaaS, es la de poder incluir la configuración necesaria en un fichero [Procfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Procfile), por que es compatible con el lenguaje de desarrollo del proyecto (en este caso, Python), también por que viendo la [documentación de Heroku sobre despliegues de aplicaciones Python](https://devcenter.heroku.com/articles/getting-started-with-python-o), hay bastantes ejemplos y ayuda que nos facilita el proceso, y por último, por que permite la conexión con GitHub para el auto-despliegue de la aplicación después de hacer "push" del código.
 
 Se ha configurado Heroku de la siguiente forma:
 
