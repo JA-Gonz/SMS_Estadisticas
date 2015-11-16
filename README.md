@@ -15,9 +15,7 @@ Definida en dicho [README](https://github.com/ButterFlyDevs/StudentsManagementSy
 
 ## Herramientas utilizadas y estructura en la nube
 
-
 - Se usará webapp2 para crear la aplicación web que servirá para consultar y configurar las estadísticas. 
-- 
 - Se usará Ansible para manejar las máquinas en su fase de despliegue. Ansible tendrá un playbook que será ejecutado automáticamente dentro del script de despliegue automático, que levantará las dos máquinas, y les dará las primeras instrucciones (que serán descargar los scripts de aprovisionamiento para poder empezar a funcionar).
 
 - Los scripts de despliegue y de aprovisionamiento se escribirán en un fichero .sh, que podrá ser ejecutado en una máquina Linux
