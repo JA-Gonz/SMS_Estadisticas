@@ -15,15 +15,12 @@ class PaginaGetEstadisticas(webapp2.RequestHandler):
         self.response.out.write(plantilla.render())
 
     def post(self):
-        print "COJONES2!"
         if not(self.request.get('orden')):
-            print "COJONES3!"
             plantilla = plantilla_env.get_template('plantilla/index.html')
             self.response.out.write(plantilla.render())
 
         else:
-
-            string = "a"
+            string = "Orden no encontrada"
             if(self.request.get('orden')) =="obtenerPorcentajeSuspensosProfesores":
                 string = str(Estadisticas.obtenerPorcentajeSuspensosProfesores("SinFiltros"))
 
