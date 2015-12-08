@@ -75,3 +75,43 @@ Se ha configurado Heroku de la siguiente forma:
 Para usar la aplicación, simplemente seguimos el enlace de Heroku del principio del documento, y escribimos algunas de las órdenes que hay como ejemplo debajo del formulario.
 
 Nota: He tenido que usar Gunicorn como servidor WSGI de Python, ya que según la documentación de Heroku, parece que es el único compatible. Buscando información por Internet, nos topamos con que no somos los únicos con este problema, y la solución pasa por Gunicorn (al menos la más fácil), tal y como se comenta [en esta pregunta de StackOverflow](http://stackoverflow.com/questions/17840120/how-to-run-webapp2appengine-in-heroku)
+
+#Docker
+
+En este punto de desarrollo del proyecto, se trabajará con Docker, para crear un contenedor que contendrá la aplicación en sí.
+
+Primero, se han elaborado los correspondientes archivos [Dockerfile]() y [docker_run.sh]() respectivamente.
+
+El primero, incluye todas las órdenes que se ejecutarán dentro del contenedor una vez creado (es una especie de script de "despliegue" en el contenedor).
+
+El segundo script es otro script de despliegue secundario, que también es necesario. En él se han introducido las instalaciones de todas las dependencias (requirements de pip para Python, aparte de la instalación de éste).
+
+Antes de todo esto, hemos tenido que tocar el archivo de servidor (main.py) para que sirva en la dirección 0.0.0.0, el puerto lo seguimos manteniendo (8080).
+
+La direción DockerHub del repo con docker es [esta](https://hub.docker.com/r/jagonz/sms_estadisticas/), y para llegar a tenerla ahí, hemos hecho lo siguiente:
+
+Primero, asignar el tag. Una vez tenemos el contenedor con docker puesto,asignamos su ID con el tag que nos da DockerHub una vez creado el repositorio. En nuestro caso:
+
+	sudo docker tag c1aa0c0c874d /jagonz/sms_estadisticas
+    
+Después, configuramos docker login:
+
+	sudo docker login --name=JAGonz --email=XXXX@XXXX.com
+    
+Una vez docker "sabe quienes somos", podemos hacer el push:
+
+	sudo docker push jagonz/sms_estadisticas
+    
+Se subirá al repo la imagen creada, y tardará bastante.
+
+Una vez acabe, podemos descargarla en nuestra máquina de Azure:
+
+	$ sudo apt-get update
+	$ sudo apt-get install -y docker.io
+	$ sudo docker pull jagonz/sms_estadisticas
+	$ sudo docker run -t -i jagonz/sms_estadisticas
+
+Como tenemos el dockerfile y el docker_run configurado, todo se lanza automáticamente.
+
+Podemos ver el resultado en la máquina Azure [en este enlace](smsestadisticas.cloudapp.net:8080)
+    
