@@ -80,7 +80,7 @@ Nota: He tenido que usar Gunicorn como servidor WSGI de Python, ya que según la
 
 En este punto de desarrollo del proyecto, se trabajará con Docker, para crear un contenedor que contendrá la aplicación en sí.
 
-Primero, se han elaborado los correspondientes archivos [Dockerfile]() y [docker_run.sh]() respectivamente.
+Primero, se han elaborado los correspondientes archivos [Dockerfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Dockerfile) y [docker_run.sh](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/docker_run.sh) respectivamente.
 
 El primero, incluye todas las órdenes que se ejecutarán dentro del contenedor una vez creado (es una especie de script de "despliegue" en el contenedor).
 
@@ -88,6 +88,9 @@ El segundo script es otro script de despliegue secundario, que también es neces
 
 Antes de todo esto, hemos tenido que tocar el archivo de servidor (main.py) para que sirva en la dirección 0.0.0.0, el puerto lo seguimos manteniendo (8080).
 
+Una vez tenemos todo creado en local, con docker:
+
+	sudo docker build -t  jagonz/sms_estadisticas .
 La direción DockerHub del repo con docker es [esta](https://hub.docker.com/r/jagonz/sms_estadisticas/), y para llegar a tenerla ahí, hemos hecho lo siguiente:
 
 Primero, asignar el tag. Una vez tenemos el contenedor con docker puesto,asignamos su ID con el tag que nos da DockerHub una vez creado el repositorio. En nuestro caso:
