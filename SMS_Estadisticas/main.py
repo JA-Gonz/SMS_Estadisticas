@@ -56,10 +56,12 @@ def fix_path():
     #
     #http://stackoverflow.com/questions/2710861/how-to-import-modules-in-google-app-engine
     # credit:  Nick Johnson of Google
-    sys.path.append(os.path.join(os.path.dirname(__file__), 'SMS_Estadisticas/lib'))
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 
 def main():
-    from lib import paste
+    #import fix_path
+    #import lib
+    #from lib import paste
     from paste import httpserver
     httpserver.serve(aplicacion, host='127.0.0.1', port='8080')
 
