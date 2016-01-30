@@ -18,8 +18,8 @@ if pyOpenSSL is installed, it also provides SSL capabilities.
 #     till this is completed.
 
 from __future__ import print_function
-import sys
-sys.path.insert(0, '../')
+from google.appengine.ext import vendor
+vendor.add('../../lib')
 import atexit
 import traceback
 import socket, sys, threading
