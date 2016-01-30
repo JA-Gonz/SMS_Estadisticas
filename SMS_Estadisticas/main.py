@@ -4,6 +4,7 @@ import os
 import webapp2
 import cgi
 import re
+import sys
 from Estadisticas import Estadisticas
 
 plantilla_env = jinja2.Environment(
@@ -50,10 +51,18 @@ aplicacion = webapp2.WSGIApplication([
 
 
 
+def fix_path():
+    # ------------ Solucion para importar módulos extras aparte de los proporcionados por google app engine
+    #
+    #http://stackoverflow.com/questions/2710861/how-to-import-modules-in-google-app-engine
+    # credit:  Nick Johnson of Google
+    sys.path.append(os.path.join(os.path.dirname(__file__), 'SMS_Estadisticas/lib'))
 
 def main():
+    from lib import paste
     from paste import httpserver
     httpserver.serve(aplicacion, host='127.0.0.1', port='8080')
 
 if __name__ == '__main__':
+    fix_path()
     main()
