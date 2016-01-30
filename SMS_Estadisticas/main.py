@@ -1,10 +1,10 @@
-import datetime
+import sys
+sys.path.insert(0, 'lib') #http://stackoverflow.com/questions/14638262/python-2-7-how-to-use-beautifulsoup-in-google-app-engine/14648038#14648038
 import jinja2
 import os
 import webapp2
 import cgi
 import re
-import sys
 from Estadisticas import Estadisticas
 
 plantilla_env = jinja2.Environment(
@@ -51,12 +51,6 @@ aplicacion = webapp2.WSGIApplication([
 
 
 
-def fix_path():
-    # ------------ Solucion para importar módulos extras aparte de los proporcionados por google app engine
-    #
-    #http://stackoverflow.com/questions/2710861/how-to-import-modules-in-google-app-engine
-    # credit:  Nick Johnson of Google
-    sys.path.append(os.path.join(os.path.dirname(__file__), 'lib'))
 
 def main():
     #import fix_path
@@ -66,5 +60,4 @@ def main():
     httpserver.serve(aplicacion, host='127.0.0.1', port='8080')
 
 if __name__ == '__main__':
-    fix_path()
     main()
