@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Consultar estadisticas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!--Cargamos la librería uikit-->
+    <link rel="stylesheet" type="text/css" href="static/css/uikit.css"/>
+    <!--Cargamos la librería JQuery-->
+    <script src="static/jquery.js"></script>
+    <!--Cargamos la librería JavaScript de uikit-->
+    <script src="static/js/uikit.min.js"></script>
+  </head>
+
+<body>
+    <!--Script de validación del formulario-->
+    <script type="text/javascript">
+    function valida(f){
+      valor = document.formularioRegistro.nombre.value;
+      if(valor.length != 0){
+        alert(valor);
+      }else{
+        document.getElementById("nombre2").innerHTML='<input id="nombre" name="nombre" type="text" placeholder="Debes introducir tu nombre">'
+      }
+    }
+    </script>
+
+     <br>
+
+      <form name="formulario" method="post" class="uk-form">
+
+      <fieldset data-uk-margin>
+
+          <legend>Funciones Estadisticas</legend>
+
+
+          <input id="orden" name="orden" type="text" placeholder="ORden">
+	<button type="submit" class="uk-button-primary" onclick="valida(this)" >Conseguir datos</button
+
+          <br>
+          
+	
+      </fieldset>
+
+	<br>
+	Historial de porcentajes de suspensos de profesores almacenados en NDB:
+	<br>
+	{{texto}}
+</body>
+</html>

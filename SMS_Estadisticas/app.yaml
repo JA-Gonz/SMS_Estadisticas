@@ -11,7 +11,5 @@ libraries:
   version: latest
 
 handlers:
-- url: /
+- url: /.*
   script: main.py
-
-

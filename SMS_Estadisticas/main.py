@@ -15,8 +15,13 @@ class PaginaGetEstadisticas(webapp2.RequestHandler):
     def get(self):
         plantilla = plantilla_env.get_template('plantilla/index.html')
         self.response.out.write(plantilla.render())
-
     def post(self):
+
+        if (self.request.get('guardar')):
+            #NDB
+            self.redirect('/configurar_estadisticas')
+        if (self.request.get('ver_estadisticas')):
+            self.redirect('/configurar_estadisticas')
         if not(self.request.get('orden')):
             plantilla = plantilla_env.get_template('plantilla/index.html')
             self.response.out.write(plantilla.render())
@@ -26,7 +31,7 @@ class PaginaGetEstadisticas(webapp2.RequestHandler):
             if(self.request.get('orden')) =="obtenerPorcentajeSuspensosProfesores":
                 string = str(Estadisticas.obtenerPorcentajeSuspensosProfesores("SinFiltros"))
 
-
+            string = string +'<input type="submit" id="guardar" name="guardar" value="Guardar Estadisticas"></input> <input type="submit" name="ver_estadisticas" id="ver_estadisticas" value="Ver Estadisticas anteriores"></input>'
             templateVars = {"texto" : string}
             plantilla = plantilla_env.get_template('plantilla/index.html')
             self.response.out.write(plantilla.render(templateVars))
