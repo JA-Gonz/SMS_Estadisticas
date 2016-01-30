@@ -1,0 +1,17 @@
+application: aplicacion
+version: alpha-001
+runtime: python27
+api_version: 1
+threadsafe: false
+
+libraries:
+- name: jinja2
+  version: latest
+- name: webapp2
+  version: latest
+
+handlers:
+- url: /
+  script: main.py
+
+
