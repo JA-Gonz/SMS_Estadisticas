@@ -57,8 +57,8 @@ def main():
     #import fix_path
     #import lib
     #from lib import paste
-    from paste import httpserver
-    httpserver.serve(aplicacion, host='127.0.0.1', port='8080')
-
+    #from paste import httpserver
+    #httpserver.serve(aplicacion, host='127.0.0.1', port='8080')
+    aplicacion.run()
 if __name__ == '__main__':
     main()
