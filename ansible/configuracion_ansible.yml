@@ -1,0 +1,16 @@
+---
+- hosts: default
+  user: joseantonio
+  sudo: yes
+
+
+  tasks:
+
+	-name: Update
+	command: apt-get update
+
+	-name: Install git
+	command: apt-get install -y git
+
+	-name: Clone 
+	shell: rm -rf SMS_Estadisticas && git clone https://github.com/JA-Gonz/SMS_Estadisticas.git
