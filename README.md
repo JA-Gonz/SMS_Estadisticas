@@ -117,4 +117,29 @@ Una vez acabe, podemos descargarla en nuestra máquina de Azure:
 Como tenemos el dockerfile y el docker_run configurado, todo se lanza automáticamente.
 
 Podemos ver el resultado en la máquina Azure [en este enlace](smsestadisticas.cloudapp.net:8080)
-    
+
+
+#Configuración con Vagrant:
+
+usaremos Vagrant para poder levantar las máquinas necesarias, con de garantizar una infraestructura para el proyecto.
+
+Primero debemos de instalar Vagrant. **La version instalada desde repositorios por apt-get contiene un bug que impide la ejecución de Vagrant con el fichero Vagrantfile proporcionado**, testeando en una máquina con Ubuntu 15.10. El fallo [ya ha sido reportado en este enlace](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=780036), y se ha llegado a esta conclusión a raíz de [esta respuesta](https://groups.google.com/forum/#!topic/vagrant-up/mBYMUHm-YBI) al mismo problema que se tenía en las ejecuciones en local. 
+
+La solución pues, ha sido desinstalar la versión de Vagrant instalada desde los repositorios, así como todos los plugins que han sido necesarios, y descargar Vagrant [desde aquí](https://www.vagrantup.com/downloads.html). Los plugins instalados previamente (si hemos seguido la instalación de repositorios y hemos intentado arreglar las dependencias), es con la orden:
+
+	rm -r ~/.vagrant.d/plugins.json ~/.vagrant.d/gems
+
+
+1. Instalamos el paquete descargado.
+
+2. Instalamos plugins de Azure:
+```
+vagrant plugin install vagrant-azure
+```
+3. Rellenamos el fichero Vagrantfile
+4. Realizamos la configuración mediante vagrant up
+```
+vagrant up --provider=azure
+```
+5. Hecho esto, pide crear un archivo vagrant_ansible_inventory (el nombre de archivo es por imposición de configuración en el archivo Vagrantfile.)
+6. Una vez creado, ha de hacerse el certificado
