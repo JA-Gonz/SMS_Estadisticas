@@ -15,7 +15,7 @@ Vagrant.configure(2) do |config|
   config.vm.box = "azure"
   config.vm.provider :azure do |azure, override|
         # Mandatory Settings
-        #azure.mgmt_certificate = File.expand_path('mycert.pem')
+        azure.mgmt_certificate = File.expand_path('ca-key.pem')
         azure.mgmt_endpoint    = 'https://management.core.windows.net'
         azure.subscription_id = '3252f376-df66-4dae-b865-76048fcb3c63'
         azure.vm_name     = 'smsestadisticas'
