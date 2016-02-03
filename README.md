@@ -143,3 +143,10 @@ vagrant up --provider=azure
 ```
 5. Hecho esto, pide crear un archivo vagrant_ansible_inventory (el nombre de archivo es por imposición de configuración en el archivo Vagrantfile.)
 6. Una vez creado, ha de hacerse el certificado
+-Creamos el certificado con las 3 órdenes que hay en el tutorial del [siguiente enlace](https://jujucharms.com/docs/stable/config-azure), apartado "Config Values". Concretamente:
+```
+openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout azure.pem -out azure.pem
+openssl x509 -inform pem -in azure.pem -outform der -out azure.cer
+chmod 600 azure.pem
+```
+-Dentro de azure, nos logueamos en nuestra cuenta (en el [portal antiguo es más comodo](https://manage.windowsazure.com/)) -> Configuración -> Certificados de administración -> Cargar, y cargamos el archivo **.cer**
