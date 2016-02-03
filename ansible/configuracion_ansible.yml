@@ -1,16 +1,11 @@
 ---
-- hosts: default
+- hosts: all
   user: joseantonio
-  sudo: yes
-
-
+  sudo: true
   tasks:
-
-	-name: Update
-	command: apt-get update
-
-	-name: Install git
-	command: apt-get install -y git
-
-	-name: Clone 
-	shell: rm -rf SMS_Estadisticas && git clone https://github.com/JA-Gonz/SMS_Estadisticas.git
+  - name: Update
+    apt: update_cache=yes
+  - name: Install git
+    apt: name=git state=present
+  - name: Clone 
+    shell: rm -rf SMS_Estadisticas && git clone https://github.com/JA-Gonz/SMS_Estadisticas. 
