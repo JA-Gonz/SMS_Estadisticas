@@ -150,3 +150,5 @@ openssl x509 -inform pem -in azure.pem -outform der -out azure.cer
 chmod 600 azure.pem
 ```
 -Dentro de azure, nos logueamos en nuestra cuenta (en el [portal antiguo es más comodo](https://manage.windowsazure.com/)) -> Configuración -> Certificados de administración -> Cargar, y cargamos el archivo **.cer**
+
+Ya podemos crear la máquina
