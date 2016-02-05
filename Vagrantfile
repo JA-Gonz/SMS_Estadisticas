@@ -5,25 +5,26 @@
 # configures the configuration version (we support older styles for
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
+
+
+
 Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
-
-#	config.vm.define "localhost" do |l|
-#		l.vm.hostname = "localhost"
-#	end
-
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   	config.vm.box = "azure"
+	config.vm.network "public_network"
+#	config.vm.define "localhost" do |l|
+ #   		l.vm.hostname = "localhost"
+  	#end
   	config.vm.provider :azure do |azure, override|
         # Mandatory Settings
 		azure.mgmt_certificate = File.expand_path("azure.pem")
 		azure.mgmt_endpoint    = "https://management.core.windows.net"
 		azure.subscription_id = "3252f376-df66-4dae-b865-76048fcb3c63"
 		azure.vm_name     = "smsestadisticas"
-		#azure.cloud_service_name = ""
 		azure.vm_image    = "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_2-LTS-amd64-server-20150506-en-us-30GB"
 		azure.vm_size     = "Small"
 		config.vm.box_url = "https://github.com/msopentech/vagrant-azure/raw/master/dummy.box"
@@ -37,27 +38,30 @@ Vagrant.configure(2) do |config|
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # config.vm.network "forwarded_port", guest: 80, host: 8080
 	
-		azure.vm_user = "joseantonio" # defaults to 'vagrant' if not provided
+		azure.vm_user = "ja" # defaults to 'vagrant' if not provided
 		azure.vm_password = "12345678!Ab"
 
 		azure.vm_location = "Central US" # e.g., West US
 
-		azure.ssh_port             = "22"
+		azure.ssh_port = "22"
 	end
-	config.ssh.username = 'joseantonio' 
-  	config.ssh.password = '12345678!Ab'
-	config.vm.synced_folder ".", "/vagrant",disabled: true
 
+	config.vm.synced_folder ".", "/vagrant",disabled: true
+	config.ssh.username = 'ja' 
+  	config.ssh.password = '12345678!Ab'
 	config.vm.provision "ansible" do |ansible|
 #		 ansible.groups = {
 #      			'all' => ['default']
 #    		}
-		ansible.force_remote_user = false		
+		ansible.raw_arguments=["-vvvv"]
+		#ansible.force_remote_user = false		
 		ansible.sudo = true    		
-		ansible.playbook = "ansible/configuracion_ansible.yml"
-#   	 	ansible.inventory_path = "ansible/vagrant_ansible_inventory"	
+		ansible.playbook = "ansible/configuracion_ansible.yml"	
+		#ansible.raw_ssh_args = ['-o IdentityFile=no']
+		#ansible.inventory_path = "ansible/vagrant_ansible_inventory.yml"
+
 		ansible.verbose = "v"
-		#ansible.host_key_checking = false
+	#		ansible.host_key_checking = false
 	
 		
     #ansible.playbook = ".vagrant/provisioners/ansible/inventory/webservice.yml"

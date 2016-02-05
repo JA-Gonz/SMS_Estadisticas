@@ -1,7 +1,8 @@
 ---
-- hosts: all
-  user: joseantonio
-  sudo: true
+- hosts: default
+  remote_user: ja
+  sudo: yes
+
   tasks:
   - name: Update
     apt: update_cache=yes
