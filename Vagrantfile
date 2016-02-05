@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
 #		 ansible.groups = {
 #      			'all' => ['default']
 #    		}
-		ansible.raw_arguments=["-vvvv"]
+		#ansible.raw_arguments=["-vvvv"]
 		#ansible.force_remote_user = false		
 		ansible.sudo = true    		
 		ansible.playbook = "ansible/configuracion_ansible.yml"	

@@ -6,7 +6,11 @@
   tasks:
   - name: Update
     apt: update_cache=yes
-  - name: Install git
+  - name: Install git 
     apt: name=git state=present
+  - name: Install unzip 
+    apt: name=unzip state=present
   - name: Clone 
-    shell: rm -rf SMS_Estadisticas && git clone https://github.com/JA-Gonz/SMS_Estadisticas. 
+    shell: rm -rf SMS_Estadisticas && git clone https://github.com/JA-Gonz/SMS_Estadisticas && cd SMS_Estadisticas
+  - name: googleAppserver
+    shell: wget https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.32.zip && unzip google_appengine_1.9.32.zip && rm -rf unzip google_appengine_1.9.32.zip
