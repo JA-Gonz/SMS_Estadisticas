@@ -119,7 +119,7 @@ Como tenemos el dockerfile y el docker_run configurado, todo se lanza automátic
 Podemos ver el resultado en la máquina Azure [en este enlace](smsestadisticas.cloudapp.net:8080)
 
 
-#Configuración con Vagrant:
+#Despliegue con Vagrant y Ansible
 
 usaremos Vagrant para poder levantar las máquinas necesarias, con de garantizar una infraestructura para el proyecto.
 
@@ -143,4 +143,30 @@ vagrant plugin install vagrant-azure
 vagrant up --provider=azure
 ```
 
+#Fabric
 
+Fabric es una herramienta para poder administrar la máquina remota, una vez que ha sido creada y aprovisionada con todo lo necesario. Dicha herramienta tiene el siguinete uso:
+
+	fab -p CONTRASEÑA -H usuario@host ORDEN
+    
+Dicho comando buscará en la ubicación actual (en el equipo local, no el remoto) un fichero [fabfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/fabfile.py) que contrendrá el nombre de órdenes posibles que podremos ejecutar en la máquina remota, y las acciones que dicha máquina debe cumplir para llevar a cabo las órdenes.
+
+En este proyecto se incluyen las siguientes órenes:
+
+* info_servidor ==> Comprueba el nombre de la máquina remota
+* descargar ==> Elimina el servidor de google descargado y el código del proyecto y lo descarga de nuevo
+* actualizar ==> Actualiza el estado del proyecto
+* iniciar ==> Inicia el servidor
+* detener ==> Detiene el servidor
+* borrar ==> Borra el proyecto
+* testear ==> Lanza los tests del proyecto
+* instalar ==> Ejecuta el instalador del proyecto
+
+#Google appengine y NDB
+En este estado, el proyecto cuenta con una base de datos [NDB](https://cloud.google.com/appengine/docs/python/ndb/), que usa el servidor de Google. Dicho servidor emula el servidor appengine, si se subiera el proyecto a los endpoints de Google, como un microservicio de apoyo al sistema. Dicho microservicio realizará peticiones a otro con los datos necesarios, los procesará, y guardará dicho procesamiento de datos usando esta nueva tecnología de almacenamiento (NDB), que permite una recuperación de datos mucho más rápida que las bases de datos convencionales.
+
+En el código fuente del proyecto, se ha incluido un fichero [Estructuras.py](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/Estructuras.py), en el cuál se incluirán todas las estructuras de datos necesarias a guardar en la base de datos. Utiliza como import el recurso ndb de google.
+
+Se ha usado como servidor el propio de Google, que emula precisamente el servidor appengine, haciendo que la aplicación se comporte en nuestra máquina igual que se comportaría en los servidores de Google si finalmente se realiza el despliegue en esa infreaestructura.
+
+Dicho servidor se ejecuta con python, sobre el fichero **dev_server**, en la carpeta oportuna del proyecto. En esta carpeta se encuentra un fichero [app.yaml](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/SMS_Estadisticas/app.yaml), donde realizamos una configuración global de la aplicación que va a ejecutar el servidor. Principalmente, cabe destacar las librerías (en nuestro caso, sólo usamos jinja2 para generar las plantillas de las páginas web, y webapp2 como servidor WSGI). El número de librerías soportadas por el servidor de google es [bastante reducido](https://cloud.google.com/appengine/docs/python/tools/libraries27), aunque siempre se pueden descargar los fuentes de librerías de terceros e incluirlas en el proyecto. Aunque no es tan trivial, sigue siendo posible, como se indica [en esta pregunta de stackoverflow.](http://stackoverflow.com/questions/14850853/how-to-include-third-party-python-libraries-in-google-app-engine).
