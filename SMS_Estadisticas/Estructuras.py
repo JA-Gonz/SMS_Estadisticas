@@ -4,8 +4,7 @@ from google.appengine.ext import ndb
 class BD_PorcentajeSuspensosProfes(ndb.Model):
 
     id_profe = ndb.IntegerProperty()
-    id_alumno = ndb.IntegerProperty()
-    nota = ndb.IntegerProperty()
+    porcentaje = ndb.FloatProperty()
     fecha = ndb.DateTimeProperty(auto_now_add=True)
 
     @classmethod
