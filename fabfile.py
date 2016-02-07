@@ -2,7 +2,7 @@ from fabric.api import *
 
 def info_servidor():
     run ('uname -s')
-    
+
 def descargar():
     run ('rm -rf SMS_Estadisticas')
     run ('git clone https://github.com/JA-Gonz/SMS_Estadisticas.git')
@@ -15,7 +15,7 @@ def actualizar():
     run ('SMS_Estadisticas && git pull')
 
 def iniciar():
-    run ('python google_appengine/dev_appserver.py SMS_Estadisticas/&')
+    run ('python google_appengine/dev_appserver.py SMS_Estadisticas/SMS_Estadisticas&')
 
 def detener():
     run ('kill -9 $(pidof python)')

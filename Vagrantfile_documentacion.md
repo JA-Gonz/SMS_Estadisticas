@@ -41,3 +41,8 @@ Hecho todo esto, configuramos por último:
 * config.ssh.username = 'ja'  ==> Usuario para la conexión SSH
 * config.ssh.password = '12345678!Ab' ==> Clave para la conexión SSH
 
+Por último configuramos ansible:
+
+* ansible.raw_arguments=["-vvvv"] ==> Hacemos que ansbile imprima todo lo que va ocurriendo, en detalle
+* ansible.sudo = true ==> HAcemos que los comandos que ejecute ansible sean con privilegios de administrador
+* ansible.playbook = "ansible/configuracion_ansible.yml"	==> Ubicación del archivo de configuración de ansible

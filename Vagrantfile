@@ -19,6 +19,7 @@ Vagrant.configure(2) do |config|
 #	config.vm.define "localhost" do |l|
  #   		l.vm.hostname = "localhost"
   	#end
+	 config.vm.network "forwarded_port", guest: 8080, host: 80
   	config.vm.provider :azure do |azure, override|
         # Mandatory Settings
 		azure.mgmt_certificate = File.expand_path("azure.pem")
@@ -43,7 +44,7 @@ Vagrant.configure(2) do |config|
 		azure.vm_password = "12345678!Ab"
 
 		azure.vm_location = "Central US" # e.g., West US
-		azure.tcp_endpoints = '8000:80'
+		azure.tcp_endpoints = '80:8080'
 		azure.ssh_port = "22"
 	end
 
