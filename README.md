@@ -136,12 +136,13 @@ La solución pues, ha sido desinstalar la versión de Vagrant instalada desde lo
 ```
 vagrant plugin install vagrant-azure
 ```
-3. Rellenamos el fichero Vagrantfile
-4. Realizamos la configuración mediante vagrant up
+3. Rellenamos el fichero [Vagrantfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Vagrantfile), que se explica [aqui]()
+4. Rellenamos el fichero [configuracion_ansible.ym](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/ansible/configuracion_ansible.yml), que se explica [aqui]()
+5. Una vez está listo todo, lanzamos el despliegue de la máquina (y su provisionamiento):
 ```
 vagrant up --provider=azure
 ```
-5. Hecho esto, pide crear un archivo vagrant_ansible_inventory (el nombre de archivo es por imposición de configuración en el archivo Vagrantfile.)
+
 6. Una vez creado, ha de hacerse el certificado
 -Creamos el certificado con las 3 órdenes que hay en el tutorial del [siguiente enlace](https://jujucharms.com/docs/stable/config-azure), apartado "Config Values". Concretamente:
 ```
@@ -151,4 +152,4 @@ chmod 600 azure.pem
 ```
 -Dentro de azure, nos logueamos en nuestra cuenta (en el [portal antiguo es más comodo](https://manage.windowsazure.com/)) -> Configuración -> Certificados de administración -> Cargar, y cargamos el archivo **.cer**
 
-Ya podemos crear la máquina
+Con todo esto ya se puede crear la máquina.

@@ -25,6 +25,7 @@ Vagrant.configure(2) do |config|
 		azure.mgmt_endpoint    = "https://management.core.windows.net"
 		azure.subscription_id = "3252f376-df66-4dae-b865-76048fcb3c63"
 		azure.vm_name     = "smsestadisticas"
+		azure.cloud_service_name = 'smsestadisticas'
 		azure.vm_image    = "b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_2-LTS-amd64-server-20150506-en-us-30GB"
 		azure.vm_size     = "Small"
 		config.vm.box_url = "https://github.com/msopentech/vagrant-azure/raw/master/dummy.box"
@@ -42,7 +43,7 @@ Vagrant.configure(2) do |config|
 		azure.vm_password = "12345678!Ab"
 
 		azure.vm_location = "Central US" # e.g., West US
-
+		azure.tcp_endpoints = '8000:80'
 		azure.ssh_port = "22"
 	end
 

@@ -28,10 +28,15 @@ class PaginaGetEstadisticas(webapp2.RequestHandler):
         if (self.request.get('ver_estadisticas')):
             ancestor_key = ndb.Key("Estadisticas_almacenadas","PorcentajeSuspensosProfe")
             estadisticas_suspensos_profes = BD_PorcentajeSuspensosProfes.estadisticas_guardadas(ancestor_key).fetch(20)
+            vector_estadisticas=[];
             for estadistica in estadisticas_suspensos_profes:
-                #self.response.out.write('<blockquote>%s</blockquote>' %
-                #                        cgi.escape(estadistica.id_profe))
-                print estadistica.id_profe
+                leido =[]
+                leido.append(estadistica.fecha)
+                leido.append(estadistica.id_profe)
+                leido.append(estadistica.porcentaje)
+                vector_estadisticas.append(leido)
+            self.response.out.write(vector_estadisticas)
+                #sprint estadistica.id_profe
 
             #self.redirect('/configurar_estadisticas')
         if not(self.request.get('orden')):
