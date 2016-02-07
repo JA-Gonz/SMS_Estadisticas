@@ -136,8 +136,8 @@ La solución pues, ha sido desinstalar la versión de Vagrant instalada desde lo
 ```
 vagrant plugin install vagrant-azure
 ```
-3. Rellenamos el fichero [Vagrantfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Vagrantfile), que se explica [aqui]()
-4. Rellenamos el fichero [configuracion_ansible.ym](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/ansible/configuracion_ansible.yml), que se explica [aqui]()
+3. Rellenamos el fichero [Vagrantfile](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Vagrantfile), que se explica [aqui](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Vagrantfile_documentacion.md)
+4. Rellenamos el fichero [configuracion_ansible.ym](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/ansible/configuracion_ansible.yml), que se explica [aqui](https://github.com/JA-Gonz/SMS_Estadisticas/blob/master/Configuracion_ansible_documentacion.md)
 5. Una vez está listo todo, lanzamos el despliegue de la máquina (y su provisionamiento):
 ```
 vagrant up --provider=azure
