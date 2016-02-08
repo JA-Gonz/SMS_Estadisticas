@@ -121,6 +121,8 @@ Podemos ver el resultado en la máquina Azure [en este enlace](smsestadisticas.c
 
 #Despliegue con Vagrant y Ansible
 
+##Segun la configuración actual del Vagrantfile, se puede acceder al sitio web desplegado en [http://smsestadisticas.cloudapp.net/](http://smsestadisticas.cloudapp.net/)
+
 usaremos Vagrant para poder levantar las máquinas necesarias, con de garantizar una infraestructura para el proyecto.
 
 Primero debemos de instalar Vagrant. **La version instalada desde repositorios por apt-get contiene un bug que impide la ejecución de Vagrant con el fichero Vagrantfile proporcionado**, testeando en una máquina con Ubuntu 15.10. El fallo [ya ha sido reportado en este enlace](https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=780036), y se ha llegado a esta conclusión a raíz de [esta respuesta](https://groups.google.com/forum/#!topic/vagrant-up/mBYMUHm-YBI) al mismo problema que se tenía en las ejecuciones en local. 
