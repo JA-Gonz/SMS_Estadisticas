@@ -12,7 +12,8 @@ def descargar():
     run ('rm -rf unzip google_appengine_1.9.32.zip')
 
 def actualizar():
-    run ('SMS_Estadisticas && git pull')
+    run ('cd SMS_Estadisticas')
+    run ('sudo git pull')
 
 def iniciar():
     run ('sudo python google_appengine/dev_appserver.py --port=80 --host=0.0.0.0 SMS_Estadisticas/SMS_Estadisticas &')

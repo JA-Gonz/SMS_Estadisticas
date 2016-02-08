@@ -4,7 +4,7 @@ install:
 	sudo pip install -r requirements.txt
 	#Algunos paquetes no son utilizados ahora, pero si que serán utilizados a posteriori
 	sudo pip install ansible
-	sudo pip --upgrade ansible
+	sudo pip install --upgrade ansible
 	wget https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.deb
 	sudo dpkg -i vagrant_1.8.1_x86_64.deb
 	sudo vagrant plugin install vagrant-azure
